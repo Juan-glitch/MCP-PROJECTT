@@ -1,0 +1,13 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run script with debugpy",
+      "type": "shell",
+      "command": "python -m debugpy --listen 0.0.0.0:5678 --wait-for-client script.py",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    }
+  ]
+}

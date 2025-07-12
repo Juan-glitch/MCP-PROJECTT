@@ -1,0 +1,44 @@
+# --- BLOCK 1: Base image & environment setup ---
+FROM python:3.12-slim
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Explanation:
+# Using official slim image ensures Python 3.12.x (e.g., 3.12.3) with minimal footprint :contentReference[oaicite:1]{index=1}.
+# NONINTERACTIVE avoids prompts during package installation.
+# --- BLOCK 2: Install system dependencies ---
+RUN apt-get update && apt-get install -y \
+    sudo \
+    git \
+    wget \
+    curl \
+    xvfb \
+    && rm -rf /var/lib/apt/lists/*
+
+# Explanation:
+# - sudo: to allow running commands with elevated permissions
+# - git: for source control
+# - wget/curl: for downloading resources
+# - xvfb: if you need headless GUI testing or X-forwarding
+# We clean apt lists to keep the image lean.
+# --- BLOCK 3: Create non-root user ---
+ARG USERNAME=devuser
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
+
+RUN groupadd --gid $USER_GID $USERNAME \
+ && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME \
+ && echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$USERNAME \
+ && chmod 0440 /etc/sudoers.d/$USERNAME
+
+# Explanation:
+# Creates a regular user 'devuser' with sudo access, avoiding root for safety.
+# --- BLOCK 4: Install Python packages ---
+USER $USERNAME
+WORKDIR /home/$USERNAME/workspace
+
+RUN pip install --upgrade pip \
+ && pip install debugpy
+
+# Explanation:
+# Upgrades pip and installs debugpy for remote debugging from VS Code.
