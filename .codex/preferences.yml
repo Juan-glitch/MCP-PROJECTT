@@ -1,0 +1,26 @@
+# Preferencias del usuario para interacción con Codex u otros asistentes
+
+idioma: "es"  # es, en, etc.
+tono: "natural y técnico"  # opciones: formal, informal, técnico, divulgativo
+respuestas_breves: false
+prefiere_resumenes: true
+prefiere_audio: true
+formato_codigo: "comentado"
+nivel_tecnico: "intermedio-avanzado"
+
+herramientas_frecuentes:
+  - docker
+  - vscode
+  - git
+  - python
+  - c++
+  - linux
+  - devcontainer
+
+restricciones:
+  - evitar redundancia innecesaria
+  - no usar frases vacías como "es importante destacar"
+
+estilo_documentacion:
+  formato_docstring: "google"
+  documentación_automática: true

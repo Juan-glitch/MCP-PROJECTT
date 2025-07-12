@@ -1,6 +1,0 @@
-este es un objeto u objetos que quiero crear. Artefactos para que pueda iterar localmente y enriquecer mas la memoria tuya para trabajar sistematixcamwnte condigo mejor. En vez de .vscode o .devcontainer y receptaculo para qu epodamos ver como evolucionamos para uqe me ayudes a ser mas optimo, estilo de habla, etc...
-Pero primero por lo sencillo empezaremos.
-He creado como objetoinicial un .txt
-
-Luego en funcion de si vamos metiendo cada vez mas contexto y cosas crearemos otros onjetos como .env etc...
-

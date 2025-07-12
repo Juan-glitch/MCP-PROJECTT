@@ -1,0 +1,10 @@
+# Bitácora personal de ideas, pruebas, experimentos o aprendizajes
+
+[2025-07-12]
+→ Empezamos con la idea de que `.codex/` sea como una memoria local persistente. Se usará para registrar estilo, contexto, decisiones, etc.
+→ Importante: mantener esto fuera del código de producción. Solo afecta la interacción conmigo y tu propio entorno de trabajo.
+
+[2025-07-13]
+→ Posible integración futura con un sistema MCP que lea esto automáticamente.
+→ Idea: usar este archivo como espacio de reflexión semanal sobre decisiones tomadas, mejoras en estilo, aprendizajes técnicos...
+- Ademas, la idea es que sea un artefacto, es decir, eel directorio codex puede contener muchas cosas y reestructuraciones para ir evolucionando. No hay que tener miedo en reestructurar esto tambien (la arquitectura de .codex y su contenido quiero decir).
