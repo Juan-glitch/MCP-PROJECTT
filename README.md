@@ -1,15 +1,3 @@
-# MCP-PROJECTT
-
-Minimal Python project skeleton with devcontainer support.
-
-## Usage
-
-Run the CLI:
-
-```bash
-python -m mcp_project
-```
-
 ## Development workflow
 
 Active work happens on the `dev` branch. Changes are merged into `main` when they are ready for release.
@@ -38,3 +26,54 @@ Execute the test suite with:
 ```bash
 python -m pytest
 ```
+=======
+2. **Construir la imagen Docker:**
+
+```bash
+docker build -t imgprocessingcontainer .
+```
+
+3. **Ejecutar el contenedor:**
+
+```bash
+docker run -it --rm -v $(pwd):/workspace imgprocessingcontainer
+```
+
+4. **Ejecutar el script principal:**
+
+```bash
+python main.py -c config.yml
+```
+
+> Puedes personalizar `config.yml` para adaptar el comportamiento del pipeline.
+
+---
+
+## Ejemplo de `config.yml`
+
+```yaml
+src: "./00_Imgs"
+dst: "./output"
+
+images:
+  resize: [1024, 768]
+  format: "png"
+  quality: 80
+
+icons:
+  size: [64, 64]
+  color: "#FF0000"
+```
+
+---
+
+## Documentación
+
+Consulta el directorio `docs/` para guías de uso, estilo, contribución y más información sobre los pipelines internos.
+
+---
+
+## Licencia
+
+Este proyecto está bajo la licencia MIT. Consulta el archivo `LICENSE` para más detalles.
+
