@@ -8,6 +8,8 @@ Active work happens on the `dev` branch. Changes are merged into `main` when the
 - `requirements.txt` – project dependencies.
 - `pyproject.toml` – build configuration.
 - `tests/` – unit tests.
+- `docs/02_codex.md` – guía para colaborar con **Codex**.
+- `.codex/` – almacén de notas persistentes para Codex.
 
 ### Show the project tree
 
@@ -70,6 +72,7 @@ icons:
 ## Documentación
 
 Consulta el directorio `docs/` para guías de uso, estilo, contribución y más información sobre los pipelines internos.
+En particular, `docs/02_codex.md` describe cómo colaborar con Codex y usar la carpeta `.codex` para compartir contexto.
 
 ---
 
