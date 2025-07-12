@@ -31,6 +31,18 @@ python -m mcp_project.tree
 python -m mcp_project tree
 ```
 
+### Use ``ProjectTree`` in your code
+
+You can also build the listing programmatically:
+
+```python
+from mcp_project import ProjectTree
+
+tree = ProjectTree(".")
+for line in tree.build_tree():
+    print(line)
+```
+
 ### Run tests
 
 Execute the test suite with:
