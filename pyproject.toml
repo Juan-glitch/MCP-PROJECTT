@@ -1,0 +1,10 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mcp_project"
+version = "0.1.0"
+description = "Example project skeleton"
+readme = "README.md"
+requires-python = ">=3.11"
