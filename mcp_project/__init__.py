@@ -3,4 +3,4 @@
 __all__ = ["main", "ProjectTree"]
 
 from .cli import main
-from .tree import ProjectTree
+from .project_tree import ProjectTree
