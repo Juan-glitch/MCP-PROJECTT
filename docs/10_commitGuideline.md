@@ -77,4 +77,3 @@ Descripción extendida (si es necesario):
 Adopta este formato para tus proyectos y considera agregar este archivo a tu repositorio como commit-guidelines.md. ¡Te ayudará a mantener un historial organizado y colaborativo! 🚀
 ```
 
-Espero que esta versión mejorada sea justo lo que necesitas. ¿Hay algo más en l

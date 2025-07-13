@@ -1,13 +1,17 @@
 # Project Structure
 
-This document gives a quick overview of the folder layout. Think of it as a map so you know where each piece of the project lives.
+This document gives a quick overview of how the repository is organised.
 
-- `mcp_project/` – package source code (think of this as the "engine room")
-  - `cli.py` – command line interface
-  - `core/` – basic utilities such as the simple tree explorer
-  - `tools/` – extra helpers like an advanced tree generator
-  - `__main__.py` – lets you run the package with ``python -m mcp_project``
-- `tests/` – unit tests (these check that the parts still work)
-- `docs/` – further documentation
+- `mcp_project/` — package source code
+  - `cli.py` — command line interface
+  - `core/` — helpers for building and inspecting directory trees
+    - `tree.py` — walk directories and collect info
+    - `filters.py` — rules to skip files
+    - `classify.py` — basic file type detection
+    - `enrich.py` — attach metadata like size and dates
+    - `snapshot.py` — save and compare tree states
+  - `__main__.py` — enables `python -m mcp_project`
+- `tests/` — unit tests covering each helper
+- `docs/` — additional guides (this file lives here)
 
 Use `python -m mcp_project tree` to print a directory tree of the current folder.

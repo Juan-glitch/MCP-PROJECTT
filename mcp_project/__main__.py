@@ -1,8 +1,4 @@
-"""MCP Project example package.
-
-This file exposes the most useful functions so importing ``mcp_project`` feels
-similar to opening a toolbox and seeing all the common tools ready to use.
-"""
+"""Support running the package with ``python -m mcp_project``."""
 
 __all__ = ["main", "ProjectTree"]
 

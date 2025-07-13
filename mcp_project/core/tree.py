@@ -1,68 +1,86 @@
-"""Small helper to list files and folders.
+"""Build a nested dictionary describing the project structure.
 
-Imagine taking a stroll through your house and jotting down the name of every
-room and object you see. ``ProjectTree`` performs the same walk on your file
-system, saving a simple text representation so you know where everything lives.
+The module walks through files and folders starting from a chosen root. As it
+visits each entry it asks the filtering and enrichment helpers whether the item
+should be included and which extra details to attach. The result is a plain
+Python dictionary that mirrors the layout of the project. It is akin to drawing
+a map of your house, room by room.
 """
 
-from __future__ import annotations  # allow type hints to reference classes by name
+from __future__ import annotations
 
-import os
 from pathlib import Path
-from typing import List
+from typing import Dict, List
+
+from . import enrich
+from .classify import classify_file
+from .filters import should_ignore
 
 
 class ProjectTree:
-    """Collect and display folder structures.
+    """Represent a directory tree and collect metadata.
 
-    Picture a tour guide leading you through the directories. At each stop the
-    guide writes down what they see so we can replay the tour later. That is
-    essentially what this class does.
+    Args:
+        root_path: Path where the walk should start. Defaults to the current
+            working directory.
     """
 
     def __init__(self, root_path: str = ".") -> None:
-        """Set up the starting point for the walk."""
+        # Keep the starting location for later use
+        self.root_path = Path(root_path)
 
-        # ``root_path`` tells us where to begin exploring. Using ``Path`` avoids
-        # issues with different operating systems, much like using a universal
-        # map legend.
-        self.root_path: Path = Path(root_path)
+    def build_tree(self) -> Dict:
+        """Generate the entire directory tree starting from ``root_path``.
 
-    def build_tree(self) -> List[str]:
-        """Return a list of lines describing the directory tree."""
+        Returns:
+            Dictionary with nested entries representing directories and files.
+        """
+        return self._build(self.root_path)
 
-        lines: List[str] = []  # each line will hold one item from the walk
+    def _build(self, current: Path) -> Dict:
+        """Recursive helper used by :meth:`build_tree`.
 
-        # ``os.walk`` works like exploring every branch of a tree. It provides a
-        # folder path plus the subfolders and files inside it.
-        for folder, subfolders, files in os.walk(self.root_path):
-            # ``relative_to`` computes the path from the starting folder to the
-            # current one. The length of that path tells us how deep we are in
-            # the hierarchy.
-            depth = len(Path(folder).relative_to(self.root_path).parts)
-            indent = "    " * depth
+        Args:
+            current: Path being processed.
 
-            # Add the folder itself to the list. A trailing slash marks it as a
-            # directory, similar to how street signs note a cul-de-sac.
-            lines.append(f"{indent}{Path(folder).name}/")
+        Returns:
+            Dictionary representation of ``current`` and its children.
+        """
+        node = {
+            "type": "dir" if current.is_dir() else "file",
+            "name": current.name,
+        }
 
-            # Add each file in alphabetical order so the output is predictable.
-            for file_name in sorted(files):
-                lines.append(f"{indent}    {file_name}")
+        if current.is_dir():
+            node["children"] = []
+            for child in sorted(current.iterdir(), key=lambda p: p.name.lower()):
+                if should_ignore(child):
+                    continue
+                child_node = self._build(child)
+                node["children"].append(child_node)
+        else:
+            # For files we can note the classification right away
+            node["classification"] = classify_file(current)
 
-        return lines
+        # Add metadata such as size and dates
+        node = enrich.enrich_node(node, current)
+        return node
 
     def display(self) -> None:
-        """Print each line returned from :meth:`build_tree`."""
+        """Print the tree in a human friendly way."""
+        self._print_node(self.build_tree())
 
-        for line in self.build_tree():
-            print(line)
+    def _print_node(self, node: Dict, prefix: str = "") -> None:
+        """Recursive helper used by :meth:`display`.
 
-
-def main() -> None:
-    """Entry point for ``python -m mcp_project.tree``."""
-    ProjectTree().display()
+        Args:
+            node: Dictionary representing the current entry.
+            prefix: String of spaces used to indent child nodes.
+        """
+        print(prefix + node["name"])
+        for child in node.get("children", []):
+            self._print_node(child, prefix + "    ")
 
 
 if __name__ == "__main__":
-    main()
+    ProjectTree().display()

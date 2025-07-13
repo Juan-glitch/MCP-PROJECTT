@@ -1,5 +1,14 @@
-"""Core functionality for MCP Project."""
+from .filters import should_ignore
+from .classify import classify_file
+from .enrich import enrich_node
+from .snapshot import diff_trees, load_snapshot, save_snapshot
 
-from .tree import ProjectTree
-
-__all__ = ["ProjectTree"]
+__all__ = [
+    "ProjectTree",
+    "should_ignore",
+    "classify_file",
+    "enrich_node",
+    "diff_trees",
+    "load_snapshot",
+    "save_snapshot",
+]

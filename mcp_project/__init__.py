@@ -1,7 +1,7 @@
-"""MCP Project example package.
+"""Convenient imports for the MCP Project package.
 
-This file exposes the most useful functions so importing ``mcp_project`` feels
-similar to opening a toolbox and seeing all the common tools ready to use.
+When this package is imported it exposes :func:`mcp_project.main` and
+:class:`mcp_project.core.ProjectTree` to make quick scripts easier to write.
 """
 
 __all__ = ["main", "ProjectTree"]
