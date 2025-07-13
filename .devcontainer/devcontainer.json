@@ -1,5 +1,5 @@
 {
-  "name": "Python‑3.12‑DevContainer",
+  "name": "Python‑3.13‑DevContainer",
   "build": {
     "dockerfile": "Dockerfile"
   },
@@ -7,17 +7,24 @@
     "--cap-add=SYS_PTRACE",
     "--security-opt", "seccomp=unconfined"
   ],
-  "settings": {
-    "terminal.integrated.defaultProfile.linux": "bash"
-  },
+  "forwardPorts": [],
+  "containerEnv": {},
+  "remoteUser": "devuser",
+
+  // VS Code-specific customizations go under this namespace
   "customizations": {
     "vscode": {
+      "settings": {
+        // Previously under deprecated "settings" at root
+        "terminal.integrated.defaultProfile.linux": "bash"
+      },
       "extensions": [
         "ms-python.python",
         "ms-python.vscode-pylance"
       ]
     }
   },
-  "postCreateCommand": "pip install -r requirements.txt",
-  "remoteUser": "devuser"
+
+  // Install dependencies during image build
+  "postCreateCommand": "" // no-op, since pip install is in Dockerfile
 }

@@ -2,7 +2,7 @@
 
 idioma: "es"  # es, en, etc.
 tono: "natural y técnico"  # opciones: formal, informal, técnico, divulgativo
-respuestas_breves: false
+respuestas_breves: true
 prefiere_resumenes: true
 prefiere_audio: true
 formato_codigo: "comentado"
