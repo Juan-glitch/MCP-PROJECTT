@@ -11,7 +11,8 @@ from __future__ import annotations  # allows forward references in type hints
 import argparse
 from typing import List, Optional
 
-from .core import ProjectTree
+from mcp_project.core.tree import ProjectTree
+
 
 
 def main(argv: Optional[List[str]] = None) -> None:

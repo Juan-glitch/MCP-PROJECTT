@@ -9,8 +9,11 @@ description = "Example project skeleton"
 readme = "README.md"
 requires-python = ">=3.11"
 
-[tool.setuptools.packages.find]
-where = ["."]
-
 [project.scripts]
 mcp-project = "mcp_project.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+[tool.setuptools.package-data]
+"mcp_project" = ["py.typed"]
+
