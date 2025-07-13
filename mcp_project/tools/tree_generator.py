@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
-"""
+"""Advanced project tree generator.
+
+This module was originally written in Spanish and provides a very feature rich
+way to explore a directory. It supports coloured output, markdown generation and
+much more. The rest of the file remains mostly unchanged for now.
+
+Below you will find the original documentation in Spanish.
+
 Generador de Árbol de Proyectos Avanzado v2.0
 
 Este script genera un árbol de directorios mejorado con múltiples formatos de salida,

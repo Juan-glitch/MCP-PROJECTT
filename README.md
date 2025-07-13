@@ -1,82 +1,36 @@
+# MCP Project
+
+This repository contains a small example package and a few helper utilities.
+Think of it as a sandbox where you can try out ideas without fear of breaking
+anything important.
+
 ## Development workflow
 
-Active work happens on the `dev` branch. Changes are merged into `main` when they are ready for release.
+Active work happens on the `dev` branch. Once changes are ready they are merged
+into `main`.
 
-## Directory layout
+## Quick start
 
-- `mcp_project/` – source code for the package.
-- `requirements.txt` – project dependencies.
-- `pyproject.toml` – build configuration.
-- `tests/` – unit tests.
-- `docs/02_codex.md` – guía para colaborar con **Codex**.
-- `.codex/` – almacén de notas persistentes para Codex.
+- Install the package in editable mode:
 
-### Show the project tree
+  ```bash
+  python -m pip install -e .
+  ```
 
-Display the folder structure using:
+- Show the directory tree of the current folder:
 
-```bash
-python -m mcp_project.tree
-# or
-python -m mcp_project tree
-```
+  ```bash
+  python -m mcp_project tree
+  ```
 
-### Run tests
+- Run the tests:
 
-Execute the test suite with:
+  ```bash
+  python -m pytest
+  ```
 
-```bash
-python -m pytest
-```
-=======
-2. **Construir la imagen Docker:**
+For a tour of the folder layout see `docs/01_project_structure.md`.
 
-```bash
-docker build -t imgprocessingcontainer .
-```
+## License
 
-3. **Ejecutar el contenedor:**
-
-```bash
-docker run -it --rm -v $(pwd):/workspace imgprocessingcontainer
-```
-
-4. **Ejecutar el script principal:**
-
-```bash
-python main.py -c config.yml
-```
-
-> Puedes personalizar `config.yml` para adaptar el comportamiento del pipeline.
-
----
-
-## Ejemplo de `config.yml`
-
-```yaml
-src: "./00_Imgs"
-dst: "./output"
-
-images:
-  resize: [1024, 768]
-  format: "png"
-  quality: 80
-
-icons:
-  size: [64, 64]
-  color: "#FF0000"
-```
-
----
-
-## Documentación
-
-Consulta el directorio `docs/` para guías de uso, estilo, contribución y más información sobre los pipelines internos.
-En particular, `docs/02_codex.md` describe cómo colaborar con Codex y usar la carpeta `.codex` para compartir contexto.
-
----
-
-## Licencia
-
-Este proyecto está bajo la licencia MIT. Consulta el archivo `LICENSE` para más detalles.
-
+MIT License. See `LICENSE` for details.

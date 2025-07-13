@@ -1,10 +1,12 @@
 import os
 from pathlib import Path
-from mcp_project.tree import ProjectTree
+
+# The simple ``ProjectTree`` class lives in the ``core`` module.
+from mcp_project.core import ProjectTree
 
 
 def test_build_tree(tmp_path: Path) -> None:
-    # Create sample directory structure
+    # Create a tiny directory structure to inspect
     (tmp_path / "dirA").mkdir()
     (tmp_path / "dirA" / "file.txt").write_text("hi")
 
