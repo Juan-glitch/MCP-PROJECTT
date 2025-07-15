@@ -44,6 +44,12 @@ into `main`.
 For a tour of the folder layout see `docs/01_project_structure.md`.
 For step-by-step validation instructions see `docs/05_validationGuide.md`.
 
+## Node tooling
+
+This repository doesn't require Node or `npm`. Earlier versions shipped with
+`package.json` and `package-lock.json` for experiments, but those files have
+been removed to keep the focus on the Python examples.
+
 ## License
 
 MIT License. See `LICENSE` for details.
