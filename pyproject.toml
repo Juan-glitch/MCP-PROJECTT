@@ -13,10 +13,13 @@ dependencies = [
     "requests==2.32.4",
     "arxiv",  # added the missing dependency
     "httpx<0.27",  # restrict to versions before 0.27 for server compatibility
+    "fastapi",  # lightweight web framework used for the example API
+    "uvicorn",  # ASGI server needed to run the application
 ]
 
 [project.scripts]
 mcp-project = "mcp_project.cli:main"
+mcp-server = "mcp_server.__main__:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
