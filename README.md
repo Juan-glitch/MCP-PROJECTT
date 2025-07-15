@@ -35,6 +35,12 @@ into `main`.
   python -m pytest
   ```
 
+- Launch the example API server:
+
+  ```bash
+  mcp-server
+  ```
+
 For a tour of the folder layout see `docs/01_project_structure.md`.
 For step-by-step validation instructions see `docs/05_validationGuide.md`.
 
