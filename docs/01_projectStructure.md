@@ -11,7 +11,8 @@ This document gives a quick overview of how the repository is organised.
     - `enrich.py` — attach metadata like size and dates
     - `snapshot.py` — save and compare tree states
   - `__main__.py` — enables `python -m mcp_project`
-- `tests/` — unit tests covering each helper
+- `mcp_server/` — lightweight FastAPI service exposing the tree API
+- `tests/` — unit tests covering each helper and the HTTP server
 - `docs/` — additional guides (this file lives here)
 
 Use `python -m mcp_project tree` to print a directory tree of the current folder.
