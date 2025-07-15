@@ -17,6 +17,12 @@ into `main`.
   python -m pip install -e .
   ```
 
+- The library `httpx` must be installed with a version **below** `0.27`:
+
+  ```bash
+  python -m pip install "httpx<0.27"
+  ```
+
 - Show the directory tree of the current folder:
 
   ```bash
