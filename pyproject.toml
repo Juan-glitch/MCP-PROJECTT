@@ -11,14 +11,15 @@ requires-python = ">=3.11"
 dependencies = [
     "pytest==8.4.0",
     "requests==2.32.4",
-    "arxiv"  # added the missing dependency
-    ,"fastapi"
-    ,"uvicorn[standard]"
-    ,"httpx<0.28"  # pin version for compatibility with Starlette TestClient
+    "arxiv",  # added the missing dependency
+    "httpx<0.28",  # pin version for compatibility with Starlette TestClient
+    "fastapi",  # lightweight web framework used for the example API
+    "uvicorn[standard]",  # ASGI server needed to run the application
 ]
 
 [project.scripts]
 mcp-project = "mcp_project.cli:main"
+mcp-server = "mcp_server.__main__:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
