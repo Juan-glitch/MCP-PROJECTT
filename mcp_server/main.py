@@ -1,13 +1,14 @@
 """Simple HTTP server exposing the project tree API.
 
-This module provides a lightweight FastAPI server that reuses the
-``ProjectTree`` helper from :mod:`mcp_project`. The goal is to
-make it easy to start experimenting with MCP (Minimal Code
-Processor) ideas. It exposes a single endpoint ``/tree`` that
-returns the directory structure of the repository in JSON form.
+``ProjectTree`` helper from :mod:`mcp_project`. The goal is to make it
+easy to start experimenting with MCP (Minimal Code Processor) ideas.
+It exposes a single endpoint ``/tree`` that returns the directory
+structure of the repository in JSON form.
 
-The implementation intentionally sticks to the basics so new
-developers can follow along without trouble.
+The implementation intentionally sticks to the basics so new developers
+can follow along without trouble. You can picture this module as a
+minimal restaurant kitchen: ``FastAPI`` is the cook, ``uvicorn`` is the
+waiter taking requests, and ``ProjectTree`` is the recipe we serve.
 """
 
 from fastapi import FastAPI
@@ -40,3 +41,14 @@ if __name__ == "__main__":
 
     # 0.0.0.0 makes the server reachable from outside the container.
     uvicorn.run("mcp_server.main:app", host="0.0.0.0", port=8000, reload=True)
+
+
+# ---------------------------------------------------------------------------
+# Advanced topic: ASGI and Uvicorn
+# ---------------------------------------------------------------------------
+# FastAPI applications speak the ASGI protocol, which is a standard interface
+# between web servers and Python applications. ``uvicorn`` is one of several
+# ASGI servers that can run a FastAPI app. You can read more about ASGI at
+# https://asgi.readthedocs.io/ and about ``uvicorn`` at
+# https://www.uvicorn.org/ if you want to dive deeper.
+
