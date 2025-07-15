@@ -81,7 +81,7 @@ icons:
 
 ## Documentación
 
-Consulta el directorio `docs/` para guías de uso, estilo, contribución y más información sobre los pipelines internos.
+Consulta el directorio `docs/guides/` para guias de uso y estilo. Los materiales del curso MCP estan en `docs/course/`.
 
 ---
 
@@ -89,3 +89,7 @@ Consulta el directorio `docs/` para guías de uso, estilo, contribución y más 
 
 Este proyecto está bajo la licencia MIT. Consulta el archivo `LICENSE` para más detalles.
 
+
+## Course Materials
+
+This repository now focuses on the "MCP: Build Rich-Context AI Apps with Anthropic" course. See `docs/course/mcp_course_overview.md` for details and future steps.
