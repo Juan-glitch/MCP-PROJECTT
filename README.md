@@ -23,6 +23,18 @@ into `main`.
   python -m mcp_project tree
   ```
 
+- Start the development server:
+
+  ```bash
+  uvicorn mcp_server.main:app --reload
+  ```
+
+- Fetch the project tree in JSON format:
+
+  ```bash
+  curl http://localhost:8000/tree
+  ```
+
 - Run the tests:
 
   ```bash

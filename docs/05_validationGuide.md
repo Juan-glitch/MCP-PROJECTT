@@ -36,7 +36,23 @@ The tree output is a nested dictionary where every folder becomes a node with
 `children`. Files also include a simple classification such as `code`, `doc` or
 `other`.
 
-## 3. Run the tests
+## 3. Start the HTTP server
+
+Run the FastAPI application to expose the tree via HTTP:
+
+```bash
+uvicorn mcp_server.main:app --reload
+```
+
+You can then fetch the data with a simple `curl` command:
+
+```bash
+curl http://localhost:8000/tree
+```
+
+The response is the same JSON structure produced by the CLI.
+
+## 4. Run the tests
 
 Automated tests confirm that each helper behaves correctly. Execute them with:
 
