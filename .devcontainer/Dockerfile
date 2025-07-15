@@ -11,6 +11,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # - Debian Bookworm is regularly updated to patch critical CVEs.
 # - 'DEBIAN_FRONTEND=noninteractive' ensures non-interactive apt installs.
 # -----------------------------------------------------
+
 #########################################################
 # BLOCK 2: Install & Upgrade System-Level Dependencies  #
 #########################################################
@@ -37,6 +38,56 @@ RUN apt-get update && \
 # - 'gnupg': sometimes needed for package verification
 # - 'rm -rf /var/lib/apt/lists/*': deletes cached metadata to reduce image size
 # -----------------------------------------------------
+
+#######################################################
+# BLOCK 2.5: Install `uv` (pip replacement by Astral) #
+#######################################################
+
+# 1. Instala uv usando el instalador oficial (binarios precompilados)
+ENV UV_VERSION=0.7.21
+RUN curl -LsSf https://astral.sh/uv/${UV_VERSION}/install.sh | sh
+
+# 2. Instala uv desde PyPI como fallback
+RUN pip install --no-cache-dir uv
+
+# 3. (Opcional) Fija el modo de enlace para evitar warnings en Docker
+ENV UV_LINK_MODE=copy
+
+# Asegura que uv esté en PATH durante el build
+ENV PATH="/root/.local/bin:${PATH}"
+
+# -----------------------------------------------------
+# Explanation:
+# - Se instala uv vía script ‘curl | sh’ para evitar depender de Python o cargo.
+# - Añade instalación desde PyPI por si prefieres gestionarlo con pip/pipx.
+# - ENV UV_LINK_MODE=copy evita warnings de hardlink en entornos Docker.
+# - Añadir a PATH garantiza disponibilidad durante los posteriores RUN.
+# -----------------------------------------------------
+
+    @@
+ # -----------------------------------------------------
+ # - 'rm -rf /var/lib/apt/lists/*': deletes cached metadata to reduce image size
+ # -----------------------------------------------------
+    
+##########################################################
+# BLOCK 2.6: Install Node.js and npm (via NodeSource)    #
+##########################################################
+
+# Node.js LTS setup for Debian-based image (via NodeSource)
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
+    apt-get install -y --no-install-recommends nodejs && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Verify installation
+RUN node -v && npm -v
+
+# -----------------------------------------------------
+# Explanation:
+# - Installs latest Node.js 18.x LTS (stable) from NodeSource
+# - Installs both node and npm
+# - Adds version checks to confirm success
+# -----------------------------------------------------
+
 ##############################################
 # BLOCK 3: Create Non-Root Developer User    #
 ##############################################
@@ -56,41 +107,49 @@ RUN groupadd --gid $USER_GID $USERNAME && \
 # - 'sudo' access is granted so developer can install/modify things if needed
 # - We store the sudo rule in a dedicated file and restrict its permissions
 # -----------------------------------------------------
+
 #########################################################
-# BLOCK 4: Install Python Dependencies from requirements #
+# BLOCK 4: Install Python Dependencies via uv           #
 #########################################################
 
 WORKDIR /home/$USERNAME/workspace
 
-# Copy only requirements.txt first to optimize build cache :contentReference[oaicite:1]{index=1}
-COPY requirements.txt ./
+# Copiamos solo pyproject.toml para aprovechar cache
+COPY pyproject.toml ./
 
 USER $USERNAME
-RUN pip install --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt
+RUN uv pip install
 
+# -----------------------------------------------------
 # Explanation:
-# - Installing dependencies early improves caching.
-# - Using '--no-cache-dir' avoids pip cache in final image.
+# - Instala dependencias usando uv a partir de pyproject.toml
+# - Crea .venv y lo usa automáticamente
+# -----------------------------------------------------
+
 #########################################################
-# BLOCK 5: Copy Application Code & Install debugpy     #
+# BLOCK 5: Copy Application Code & Install debugpy      #
 #########################################################
 
-COPY . .
+COPY --chown=$USERNAME:$USERNAME . .
 
-RUN pip install debugpy
+RUN uv pip install debugpy
 
+# -----------------------------------------------------
 # Explanation:
-# - Application code is added after dependencies to avoid cache bust.
-# - 'debugpy' enables VS Code remote debugging.
+# - Se copia el código después para evitar invalidar la cache previa.
+# - debugpy habilita depuración remota desde VS Code.
+# -----------------------------------------------------
+
 ##############################################
 # BLOCK 6: Final Setup                        #
 ##############################################
 
 USER $USERNAME
-ENV PATH="/home/${USERNAME}/.local/bin:${PATH}"
+ENV PATH="/home/${USERNAME}/.local/bin:/home/${USERNAME}/workspace/.venv/bin:${PATH}"
 WORKDIR /home/$USERNAME/workspace
 
+# -----------------------------------------------------
 # Explanation:
-# - Ensures any scripts installed via pip are in PATH.
-# - Starts in the workspace directory as non-root user.
+# - PATH incluye binarios instalados por uv y el entorno virtual .venv.
+# - Se establece el directorio de trabajo como workspace del usuario final.
+# -----------------------------------------------------

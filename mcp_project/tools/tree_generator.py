@@ -81,7 +81,7 @@ def main():
 
     try:
         for line in gen.generate():
-            print(Fore.GREEN + line + Style.RESET_ALL)
+            print(Fore.GREEN + str(line) + Style.RESET_ALL)
 
         if args.stats:
             elapsed = time.time() - gen.stats['start']

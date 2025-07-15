@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=61"]
+requires = ["setuptools>=61.0.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -8,12 +8,20 @@ version = "0.1.0"
 description = "Example project skeleton"
 readme = "README.md"
 requires-python = ">=3.11"
+dependencies = [
+    "pytest==8.4.0",
+    "requests==2.32.4",
+    "arxiv"  # added the missing dependency
+]
 
 [project.scripts]
 mcp-project = "mcp_project.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
+
 [tool.setuptools.package-data]
 "mcp_project" = ["py.typed"]
 
+[tool.uv]
+virtualenvs.in-project = true
