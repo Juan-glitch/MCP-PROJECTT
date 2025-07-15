@@ -4,3 +4,8 @@ He creado como objetoinicial un .txt
 
 Luego en funcion de si vamos metiendo cada vez mas contexto y cosas crearemos otros onjetos como .env etc...
 
+2025-07-15 @codex record:
+- We reorganized documentation into ``docs/guides`` and ``docs/course``.
+- ``HISTORY.md`` now tracks commits from July 12 and July 15.
+- Future steps will revolve around the MCP course "Build Rich-Context AI Apps with Anthropic".
+
