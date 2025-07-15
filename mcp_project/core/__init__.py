@@ -1,3 +1,4 @@
+from .tree import ProjectTree
 from .filters import should_ignore
 from .classify import classify_file
 from .enrich import enrich_node
