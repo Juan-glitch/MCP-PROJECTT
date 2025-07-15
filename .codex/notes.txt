@@ -8,3 +8,148 @@
 → Posible integración futura con un sistema MCP que lea esto automáticamente.
 → Idea: usar este archivo como espacio de reflexión semanal sobre decisiones tomadas, mejoras en estilo, aprendizajes técnicos...
 - Ademas, la idea es que sea un artefacto, es decir, eel directorio codex puede contener muchas cosas y reestructuraciones para ir evolucionando. No hay que tener miedo en reestructurar esto tambien (la arquitectura de .codex y su contenido quiero decir).
+
+
+[2025-07-15] #Hoy, por hacer  @ codex haz esta tarea
+### quiero que me reestructures esta informacion que es lo que queiero qu eme ayudes a ocnseguir:
+desglose completo del curso “MCP: Build Rich‑Context AI Apps with Anthropic”, impartido por DeepLearning.AI en colaboración con Anthropic:
+
+🎯 ¿Qué es MCP?
+El Model Context Protocol (MCP) es un estándar abierto, presentado en noviembre de 2024 por Anthropic para conectar modelos de lenguaje con herramientas, APIs y datos externos de forma uniforme. Actúa como un "USB‑C" para integraciones de IA, eliminando la necesidad de escribir conectores personalizados para cada herramienta 
+Anthropic
++15
+deeplearning.ai
++15
+Reddit
++15
+.
+
+🛠️ Arquitectura cliente‑servidor
+Servidor MCP: expone recursos, herramientas y plantillas de prompt (ej. operaciones de archivo, búsquedas web).
+
+Cliente MCP: corre dentro de tu app con el LLM, descubre el servidor y solicita herramientas/datos cuando se necesitan 
+Wikipedia
+.
+
+Usa JSON‑RPC 2.0 como protocolo de comunicación 
+Anthropic
++8
+Wikipedia
++8
+Wikipedia
++8
+.
+
+🧑‍🏫 ¿Qué aprenderás en el curso?
+Conceptos clave de MCP
+Por qué y cómo el protocolo evita la “explosión” de integraciones N×M 
+arXiv
++11
+deeplearning.ai
++11
+Wikipedia
++11
+.
+
+Construcción inicial
+Crearás un chatbot con herramientas personalizadas (por ejemplo, búsqueda de papers académicos) y lo harás compatible con MCP 
+Anthropic
++15
+deeplearning.ai
++15
+Medium
++15
+.
+
+Despliegue del servidor
+Levantarás un servidor MCP local con FastMCP, exponiendo recursos/prompts y aprendiendo a usar MCP Inspector para depurarlo 
+Anthropic
++3
+deeplearning.ai
++3
+Reddit
++3
+.
+
+Conexión del cliente
+Integrarás el cliente MCP en tu chatbot para que consuma herramientas dinámicamente 
+Facebook
++3
+Wikipedia
++3
+Wikipedia
++3
+LinkedIn
++3
+deeplearning.ai
++3
+DeepLearning.AI - Learning Platform
++3
+.
+
+Uso de servidores de referencia
+Aprenderás a conectar servidores preexistentes de Anthropic como filesystem (operaciones de disco) y fetch (scraping web en Markdown) 
+Wikipedia
+Wikipedia
++2
+deeplearning.ai
++2
+Reddit
++2
+.
+
+Claude Desktop
+Configurarás este entorno para usar tu servidor MCP y otros, y verás cómo simplifica la lógica del cliente 
+deeplearning.ai
++1
+Wikipedia
++1
+.
+
+Despliegue en producción
+Publicarás tu servidor MCP remotamente y lo probarás con Inspector o clientes compatibles 
+deeplearning.ai
+.
+
+Hoja de ruta MCP
+Revisión de futuros avances: registros (registry), descubrimiento de servidores, autenticación/autorización y arquitectura multi‑agente 
+Medium
++1
+Anthropic
++1
+.
+
+✅ Al final del curso serás capaz de:
+Crear apps de IA que incorporan contexto dinámico mediante herramientas externas.
+
+Desplegar y conectar servidores MCP (locales o en la nube).
+
+Integrar clientes MCP en chatbots o sistemas de IA.
+
+Utilizar servidores ya listos (filesystem, web scraping).
+
+Desplegar apps ricas en contexto sin reinventar integraciones para cada caso de uso.
+
+🌐 ¿Por qué ahora?
+MCP ya ha sido adoptado por OpenAI, Google DeepMind, Microsoft en Windows y múltiples plataformas (Replit, Sourcegraph, Zed…) 
+Reddit
++14
+Wikipedia
++14
+Wikipedia
++14
+LinkedIn
+.
+
+Microsoft lo integra a nivel de sistema operativo para habilitar agentes que interactúan con archivos locales .
+
+Representa un cambio de paradigma en la creación de agent‑style AI workflows 
+YouTube
++3
+Wikipedia
++3
+Wikipedia
++3
+.
+
+"""
