@@ -17,6 +17,12 @@ into `main`.
   python -m pip install -e .
   ```
 
+- The library `httpx` must be installed with a version **below** `0.27`:
+
+  ```bash
+  python -m pip install "httpx<0.27"
+  ```
+
 - Show the directory tree of the current folder:
 
   ```bash
@@ -39,6 +45,12 @@ into `main`.
 
   ```bash
   python -m pytest
+  ```
+
+- Launch the example API server:
+
+  ```bash
+  mcp-server
   ```
 
 For a tour of the folder layout see `docs/01_project_structure.md`.
