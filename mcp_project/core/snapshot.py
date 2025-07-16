@@ -70,3 +70,4 @@ def diff_trees(tree_old: Dict, tree_new: Dict) -> Dict[str, List[str]]:
         "added": sorted(new_set - old_set),
         "removed": sorted(old_set - new_set),
     }
+

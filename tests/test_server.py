@@ -20,3 +20,4 @@ def test_tree_endpoint_returns_data() -> None:
     assert response.status_code == 200
     assert data.get("type") == "dir"
     assert "children" in data
+
