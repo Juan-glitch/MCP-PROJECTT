@@ -2,7 +2,8 @@
 
 This repository contains a small example package and a few helper utilities.
 Think of it as a sandbox where you can try out ideas without fear of breaking
-anything important.
+anything important. A minimal FastAPI server is included so you can expose the
+project tree over HTTP.
 
 ## Development workflow
 
@@ -17,10 +18,16 @@ into `main`.
   python -m pip install -e .
   ```
 
-- The library `httpx` must be installed with a version **below** `0.27`:
+- Once installed, launch the API server with the ``mcp-server`` command:
 
   ```bash
-  python -m pip install "httpx<0.27"
+  mcp-server
+  ```
+
+- The library `httpx` must be installed with a version **below** `0.28`:
+
+  ```bash
+  python -m pip install "httpx<0.28"
   ```
 
 - Show the directory tree of the current folder:

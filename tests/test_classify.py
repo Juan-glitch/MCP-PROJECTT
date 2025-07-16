@@ -7,3 +7,4 @@ def test_classify_basic() -> None:
     assert classify_file(Path("README.md")) == "doc"
     assert classify_file(Path("program.o")) == "binary"
     assert classify_file(Path("pyproject.toml")) == "meta"
+
