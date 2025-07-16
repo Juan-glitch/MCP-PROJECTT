@@ -20,7 +20,11 @@
       },
       "extensions": [
         "ms-python.python",
-        "ms-python.vscode-pylance"
+        "ms-python.vscode-pylance",
+        "bierner.markdown-mermaid",
+        "NodeNest.readme-markdown-viewer",
+        "shd101wyy.markdown-preview-enhanced",
+        "yzhang.markdown-all-in-one"
       ]
     }
   },

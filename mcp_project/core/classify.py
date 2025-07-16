@@ -1,3 +1,14 @@
+# --- FastMCP integration header ---
+import json
+from typing import Dict
+from pathlib import Path
+from mcp.server.fastmcp import FastMCP
+
+# Inicializa el servidor FastMCP
+mcp = FastMCP("classify")
+
+# --- Fin cabecera FastMCP ---
+
 """Classify files into broad categories based on their extension.
 
 This module performs a quick check on the file name to guess what the file is
@@ -6,8 +17,6 @@ whether it is a novel or a manual. The approach is simple but good enough for a
 first version of the project tree.
 """
 
-from pathlib import Path
-
 # Groups of extensions mapped to a logical type
 CODE_EXT = {".py", ".cpp", ".h", ".c", ".java", ".ts", ".kt"}
 DOC_EXT = {".md", ".rst"}
@@ -15,6 +24,7 @@ BINARY_EXT = {".o", ".ko", ".exe", ".dll"}
 META_FILES = {"pyproject.toml", "setup.py", ".gitignore", "README", "LICENSE"}
 
 
+@mcp.tool()
 def classify_file(path: Path) -> str:
     """Guess what type of file ``path`` refers to.
 
@@ -46,3 +56,6 @@ def classify_file(path: Path) -> str:
 
     # Anything we do not recognize falls into the generic bucket.
     return "other"
+
+if __name__ == "__main__":
+    mcp.run(transport
