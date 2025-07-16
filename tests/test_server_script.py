@@ -28,3 +28,4 @@ def test_server_starts() -> None:
         process.terminate()
         process.wait(timeout=5)
 
+
