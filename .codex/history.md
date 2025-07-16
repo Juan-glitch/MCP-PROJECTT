@@ -7,3 +7,7 @@
 
 ## 2025-07-XX
 - [A completar] Revisión del estilo de interacción tras analizar sesiones anteriores.
+
+## 2025-07-17
+- Updated repo docs and Dockerfile after audit.
+

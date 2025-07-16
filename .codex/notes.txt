@@ -175,3 +175,6 @@ El sistema está pensado para ser ampliado, no terminado. Puede evolucionar para
 
 FastMCP no se limita a ser una interfaz, sino un entorno de interacción visual y dinámica con el MCP, actuando como puente entre el usuario y las herramientas.
 
+
+[2025-07-17] Rechecked the repository, fixed minor doc issues and Dockerfile.
+

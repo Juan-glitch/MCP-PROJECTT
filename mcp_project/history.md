@@ -42,3 +42,8 @@ Ver por qué el proyecto falla al instalarse y entender si estoy trabajando con 
 ### 📝 Notas adicionales
 
 Trabajo dentro de `.devcontainer`. El objetivo es que este módulo funcione en cualquier entorno y sea reutilizable. He empezado una wiki personal con todo lo aprendido sobre paquetes y tests en Python.
+
+## 2025-07-17
+- Verified FastAPI server integration and updated documentation.
+- Added commands for running mcp-server.
+

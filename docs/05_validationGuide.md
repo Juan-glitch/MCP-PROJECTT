@@ -38,10 +38,11 @@ The tree output is a nested dictionary where every folder becomes a node with
 
 ## 3. Start the HTTP server
 
-Run the FastAPI application to expose the tree via HTTP:
+Run the FastAPI application to expose the tree via HTTP. You can call Uvicorn
+directly or use the handy ``mcp-server`` wrapper installed with the package:
 
 ```bash
-uvicorn mcp_server.main:app --reload
+mcp-server  # equivalent to running: uvicorn mcp_server.main:app --reload
 ```
 
 You can then fetch the data with a simple `curl` command:
