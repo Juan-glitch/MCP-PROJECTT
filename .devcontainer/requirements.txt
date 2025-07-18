@@ -1,2 +1,0 @@
-# Add your project dependencies here
-pytest==8.4.

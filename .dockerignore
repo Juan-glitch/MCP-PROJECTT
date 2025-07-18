@@ -1,0 +1,11 @@
+# Evita copiar entornos locales al contenedor
+.venv
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+*.log
+*.sqlite
+.env
+.cache

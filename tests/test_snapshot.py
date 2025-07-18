@@ -1,4 +1,4 @@
-from mcp_project.core.snapshot import diff_trees, save_snapshot, load_snapshot
+from src.core.snapshot import diff_trees, save_snapshot, load_snapshot
 from pathlib import Path
 
 

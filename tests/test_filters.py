@@ -1,5 +1,5 @@
 from pathlib import Path
-from mcp_project.core.enrich import enrich_node
+from src.core.enrich import enrich_node
 
 
 def test_enrich_node(tmp_path: Path) -> None:

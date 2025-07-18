@@ -1,6 +1,6 @@
 
 from pathlib import Path
-from mcp_project.core import ProjectTree
+from src.core import ProjectTree
 
 
 def test_build_tree(tmp_path: Path) -> None:

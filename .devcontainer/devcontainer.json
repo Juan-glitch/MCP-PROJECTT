@@ -1,34 +1,44 @@
 {
-  "name": "Python‑3.13‑DevContainer",
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
-  "runArgs": [
-    "--cap-add=SYS_PTRACE",
-    "--security-opt", "seccomp=unconfined"
+  "name": "MCP DevContainer",
+  "dockerFile": "Dockerfile",
+  "context": "..",
+  "workspaceFolder": "/workspace/MCP-PROJECTT",
+  "forwardPorts": [6274, 6277],
+  
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspace/MCP-PROJECTT,type=bind,consistency=cached"
   ],
-  "forwardPorts": [],
-  "containerEnv": {},
-  "remoteUser": "devuser",
-
-  // VS Code-specific customizations go under this namespace
+  
   "customizations": {
     "vscode": {
       "settings": {
-        // Previously under deprecated "settings" at root
-        "terminal.integrated.defaultProfile.linux": "bash"
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "python.defaultInterpreterPath": "/workspace/MCP-PROJECTT/.venv/bin/python",
+        "python.terminal.activateEnvironment": true,
+        "terminal.integrated.env.linux": {
+          "PATH": "/workspace/MCP-PROJECTT/.venv/bin:${env:PATH}",
+          "VIRTUAL_ENV": "/workspace/MCP-PROJECTT/.venv"
+        },
+        "git.enabled": true,
+        "git.path": "/usr/bin/git"
       },
       "extensions": [
         "ms-python.python",
         "ms-python.vscode-pylance",
+        "ms-vscode.vscode-git",
+        "GitHub.vscode-pull-request-github",
         "bierner.markdown-mermaid",
         "NodeNest.readme-markdown-viewer",
         "shd101wyy.markdown-preview-enhanced",
-        "yzhang.markdown-all-in-one"
+        "yzhang.markdown-all-in-one",
+        "ms-toolsai.jupyter",
+        "Codeium.codeium",
+        "Codeium.windsurfPyright"
       ]
     }
   },
-
-  // Install dependencies during image build
-  "postCreateCommand": "" // no-op, since pip install is in Dockerfile
+  
+  // "postCreateCommand": "uv venv && uv sync && uv pip install -e .",
+  
+  "remoteUser": "root"
 }

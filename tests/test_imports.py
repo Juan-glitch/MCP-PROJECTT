@@ -2,7 +2,7 @@
 
 
 def test_core_imports() -> None:
-    from mcp_project.core import classify, enrich, filters, snapshot, tree
+    from src.core import classify, enrich, filters, snapshot, tree
     assert callable(classify.classify_file)
     assert callable(enrich.enrich_node)
     assert callable(filters.should_ignore)

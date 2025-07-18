@@ -1,5 +1,5 @@
 from pathlib import Path
-from mcp_project.core.classify import classify_file
+from src.core.classify import classify_file
 
 
 def test_classify_basic() -> None:
